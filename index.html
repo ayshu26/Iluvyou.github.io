@@ -3,13 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>for my one and only</title>
+  <title>EZY Site</title>
 
-  <!-- Bubble font -->
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&display=swap" rel="stylesheet">
 
   <style>
-    /* Full-page background */
     body {
       margin: 0;
       min-height: 100vh;
@@ -17,13 +15,16 @@
       place-items: center;
       font-family: Arial, sans-serif;
 
-      background-image: url("background.jpg");
+      /* Fallback first (so you SEE something even if image fails) */
+      background: radial-gradient(circle at top, #7a4b55, #3a2328);
+
+      /* Then your image on top */
+      background-image: url("./background.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
     }
 
-    /* Dark overlay for readability */
     .overlay {
       position: fixed;
       inset: 0;
@@ -31,7 +32,6 @@
       z-index: 0;
     }
 
-    /* Center content */
     .content {
       position: relative;
       z-index: 1;
@@ -39,7 +39,6 @@
       padding: 24px;
     }
 
-    /* LEFT acrostic title */
     .ezy-title {
       position: fixed;
       left: 40px;
@@ -55,12 +54,11 @@
       color: white;
 
       text-shadow: 0 6px 15px rgba(0, 0, 0, 0.45);
-      filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.35)); /* soft glow */
+      filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.35));
       user-select: none;
       z-index: 2;
     }
 
-    /* Responsive EZY */
     @media (max-width: 700px) {
       .ezy-title {
         font-size: 70px;
@@ -68,14 +66,12 @@
       }
     }
 
-    /* Pulse animation for heart */
     @keyframes pulse {
       0%   { transform: rotate(-45deg) scale(1); }
       50%  { transform: rotate(-45deg) scale(1.04); }
       100% { transform: rotate(-45deg) scale(1); }
     }
 
-    /* Smaller heart button */
     .heart-btn {
       width: 180px;
       height: 180px;
@@ -88,8 +84,7 @@
       box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35);
       transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
       outline: none;
-
-      animation: pulse 2.5s infinite; /* gentle pulse */
+      animation: pulse 2.5s infinite;
     }
 
     .heart-btn::before,
@@ -102,25 +97,17 @@
       border-radius: 50%;
     }
 
-    .heart-btn::before {
-      top: -90px;
-      left: 0;
-    }
+    .heart-btn::before { top: -90px; left: 0; }
+    .heart-btn::after  { left: 90px; top: 0; }
 
-    .heart-btn::after {
-      left: 90px;
-      top: 0;
-    }
-
-    /* Heart text (slightly smaller so it centers better) */
     .heart-label {
       position: absolute;
       inset: 0;
       display: grid;
       place-items: center;
-      transform: rotate(45deg); /* rotate text back */
+      transform: rotate(45deg);
       color: white;
-      font-size: 24px; /* tweak: smaller for better centering */
+      font-size: 24px;
       font-weight: 700;
       letter-spacing: 0.5px;
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
@@ -131,14 +118,12 @@
       transform: rotate(-45deg) scale(1.03);
       box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
       filter: brightness(1.05);
-      animation: none; /* optional: stop pulsing when hovered */
     }
 
     .heart-btn:active {
       transform: rotate(-45deg) scale(0.98);
     }
 
-    /* Caption */
     .caption {
       margin-top: 22px;
       color: white;
@@ -151,24 +136,21 @@
 <body>
   <div class="overlay"></div>
 
-  <!-- EZY down the left -->
   <div class="ezy-title">
     <span>E</span>
     <span>Z</span>
     <span>Y</span>
   </div>
 
-  <!-- Center heart button -->
   <div class="content">
     <button class="heart-btn" id="heartButton" aria-label="Heart button">
-      <div class="heart-label"></div>
+      <div class="heart-label">CLICK</div>
     </button>
 
-    <div class="caption">My GitHub Pages site updated</div>
+    <div class="caption">UPDATED ✅</div>
   </div>
 
   <script>
-    // Click action
     document.getElementById("heartButton").addEventListener("click", () => {
       window.location.href = "https://www.bbc.co.uk/bitesize";
     });
