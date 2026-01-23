@@ -4,10 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My GitHub Page</title>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&display=swap" rel="stylesheet">
+
+  <!-- Bubble font -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&display=swap" rel="stylesheet">
 
   <style>
-    /* Full-page background */
     body {
       margin: 0;
       min-height: 100vh;
@@ -15,14 +16,12 @@
       place-items: center;
       font-family: Arial, sans-serif;
 
-      /* Custom background image */
       background-image: url("background.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
     }
 
-    /* Dark overlay so text/button stands out */
     .overlay {
       position: fixed;
       inset: 0;
@@ -30,7 +29,6 @@
       z-index: 0;
     }
 
-    /* Center content */
     .content {
       position: relative;
       z-index: 1;
@@ -38,13 +36,40 @@
       padding: 24px;
     }
 
-    /* Heart button */
+    /* LEFT acrostic title */
+    .ezy-title {
+      position: fixed;
+      left: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      font-family: "Baloo 2", cursive;
+      font-size: 120px;
+      font-weight: 800;
+      color: white;
+
+      text-shadow: 0 6px 15px rgba(0, 0, 0, 0.45);
+      user-select: none;
+      z-index: 2;
+    }
+
+    @media (max-width: 700px) {
+      .ezy-title {
+        font-size: 70px;
+        left: 18px;
+      }
+    }
+
+    /* Smaller heart button */
     .heart-btn {
       width: 180px;
       height: 180px;
       border: none;
       cursor: pointer;
-      background: #e60023; /* red */
+      background: #e60023;
       position: relative;
       transform: rotate(-45deg);
       border-radius: 18px;
@@ -53,7 +78,6 @@
       outline: none;
     }
 
-    /* Two circles to form the heart */
     .heart-btn::before,
     .heart-btn::after {
       content: "";
@@ -74,15 +98,14 @@
       top: 0;
     }
 
-    /* Inner label */
     .heart-label {
       position: absolute;
       inset: 0;
       display: grid;
       place-items: center;
-      transform: rotate(45deg); /* rotate text back */
+      transform: rotate(45deg);
       color: white;
-      font-size: 28px;
+      font-size: 26px;
       font-weight: 700;
       letter-spacing: 0.5px;
       text-shadow: 0 2px 10px rgba(0,0,0,0.35);
@@ -99,60 +122,37 @@
       transform: rotate(-45deg) scale(0.98);
     }
 
-    /* Optional caption */
     .caption {
       margin-top: 22px;
       color: white;
       font-size: 18px;
       text-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
-    /* Vertical EZY title */
-.ezy-title {
-  position: fixed;
-  left: 40px;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  font-family: "Baloo 2", cursive;
-  font-size: 120px;
-  font-weight: 800;
-  color: white;
-
-  text-shadow:
-    0 6px 15px rgba(0, 0, 0, 0.45);
-
-  user-select: none;
-}
-
   </style>
 </head>
 
 <body>
   <div class="overlay"></div>
-<div class="ezy-title">
-  <span>E</span>
-  <span>Z</span>
-  <span>Y</span>
-</div>
+
+  <div class="ezy-title">
+    <span>E</span>
+    <span>Z</span>
+    <span>Y</span>
+  </div>
 
   <div class="content">
     <button class="heart-btn" id="heartButton" aria-label="Heart button">
-      <div class="heart-label"></div>
+      <div class="heart-label">CLICK</div>
     </button>
 
+    <div class="caption">My GitHub Pages site</div>
   </div>
 
   <script>
-    // What happens when you click the heart button:
     document.getElementById("heartButton").addEventListener("click", () => {
-      // Change this to any link you want:
-      window.location.href = "https://buttermax.net/";
+      window.location.href = "https://www.bbc.co.uk/bitesize";
     });
   </script>
 </body>
 </html>
-
 
