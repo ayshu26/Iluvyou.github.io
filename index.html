@@ -3,76 +3,122 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EZY Site</title>
+  <title>EZY Home</title>
 
+  <!-- Bubble font -->
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
       font-family: Arial, sans-serif;
 
-      /* Fallback first (so you SEE something even if image fails) */
+      /* Same theme background */
       background: radial-gradient(circle at top, #7a4b55, #3a2328);
+      color:white;
+    }
 
-      /* Then your image on top */
+    /* Optional: if you still want your custom image behind the theme,
+       uncomment the next 5 lines and make sure background.jpg exists.
+    */
+    /*
+    body{
       background-image: url("./background.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
     }
+    */
 
-    .overlay {
+    .overlay{
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.35);
+      background: rgba(0,0,0,0.25);
       z-index: 0;
     }
 
-    .content {
+    .wrap{
+      width:min(1100px, 92vw);
       position: relative;
       z-index: 1;
-      text-align: center;
-      padding: 24px;
     }
 
-    .ezy-title {
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom: 18px;
+    }
+
+    .title{
+      font-family:"Baloo 2", cursive;
+      font-size: 60px;
+      margin:0;
+      letter-spacing: 1px;
+      text-shadow: 0 6px 15px rgba(0,0,0,0.35);
+    }
+
+    .card{
+      background: rgba(0,0,0,0.28);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+      backdrop-filter: blur(6px);
+      display:grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 22px;
+      align-items:center;
+      min-height: 360px;
+    }
+
+    @media (max-width: 900px){
+      .card{ grid-template-columns: 1fr; text-align:center; }
+      .title{ font-size: 48px; }
+    }
+
+    /* LEFT acrostic title */
+    .ezy-vertical{
       position: fixed;
-      left: 40px;
+      left: 36px;
       top: 50%;
       transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
+      display:flex;
+      flex-direction:column;
       gap: 10px;
-
-      font-family: "Baloo 2", cursive;
+      font-family:"Baloo 2", cursive;
       font-size: 120px;
       font-weight: 800;
       color: white;
-
-      text-shadow: 0 6px 15px rgba(0, 0, 0, 0.45);
-      filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.35));
-      user-select: none;
+      text-shadow: 0 6px 15px rgba(0,0,0,0.45);
+      filter: drop-shadow(0 0 12px rgba(255,255,255,0.25));
+      user-select:none;
       z-index: 2;
+      opacity: 0.95;
     }
 
-    @media (max-width: 700px) {
-      .ezy-title {
-        font-size: 70px;
-        left: 18px;
-      }
+    @media (max-width: 900px){
+      .ezy-vertical{ display:none; } /* hide on small screens */
     }
 
+    /* Heart button pulse */
     @keyframes pulse {
       0%   { transform: rotate(-45deg) scale(1); }
       50%  { transform: rotate(-45deg) scale(1.04); }
       100% { transform: rotate(-45deg) scale(1); }
     }
 
-    .heart-btn {
+    .heart-area{
+      display:grid;
+      place-items:center;
+      padding: 10px 0;
+    }
+
+    .heart-btn{
       width: 180px;
       height: 180px;
       border: none;
@@ -81,54 +127,85 @@
       position: relative;
       transform: rotate(-45deg);
       border-radius: 18px;
-      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.35);
       transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
       outline: none;
       animation: pulse 2.5s infinite;
     }
 
     .heart-btn::before,
-    .heart-btn::after {
-      content: "";
-      position: absolute;
+    .heart-btn::after{
+      content:"";
+      position:absolute;
       width: 180px;
       height: 180px;
       background: #e60023;
       border-radius: 50%;
     }
 
-    .heart-btn::before { top: -90px; left: 0; }
-    .heart-btn::after  { left: 90px; top: 0; }
+    .heart-btn::before{ top:-90px; left:0; }
+    .heart-btn::after{ left:90px; top:0; }
 
-    .heart-label {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
+    .heart-label{
+      position:absolute;
+      inset:0;
+      display:grid;
+      place-items:center;
       transform: rotate(45deg);
-      color: white;
+      color:white;
       font-size: 24px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
-      user-select: none;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+      user-select:none;
     }
 
-    .heart-btn:hover {
+    .heart-btn:hover{
       transform: rotate(-45deg) scale(1.03);
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.45);
       filter: brightness(1.05);
     }
 
-    .heart-btn:active {
+    .heart-btn:active{
       transform: rotate(-45deg) scale(0.98);
     }
 
-    .caption {
-      margin-top: 22px;
-      color: white;
+    .subtitle{
       font-size: 18px;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      line-height: 1.55;
+      opacity: 0.95;
+      margin: 0 0 14px;
+    }
+
+    .btn-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top: 10px;
+    }
+
+    a.btn{
+      display:inline-block;
+      text-decoration:none;
+      color:white;
+      background:#e60023;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-weight:800;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+    a.btn:hover{ transform: translateY(-2px); filter: brightness(1.05); }
+
+    a.btn.secondary{
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .tiny{
+      margin-top: 14px;
+      font-size: 13px;
+      opacity: 0.8;
     }
   </style>
 </head>
@@ -136,21 +213,43 @@
 <body>
   <div class="overlay"></div>
 
-  <div class="ezy-title">
+  <!-- Vertical EZY -->
+  <div class="ezy-vertical">
     <span>E</span>
     <span>Z</span>
     <span>Y</span>
   </div>
 
-  <div class="content">
-    <button class="heart-btn" id="heartButton" aria-label="Heart button">
-      <div class="heart-label"></div>
-    </button>
+  <div class="wrap">
+    <div class="topbar">
+      <h1 class="title">EZY</h1>
+      <a class="btn secondary" href="./letters.html">Open Letters ✉️</a>
+    </div>
 
-    <div class="caption"></div>
+    <div class="card">
+      <div>
+        <p class="subtitle">
+          Click the heart to open your envelopes. Each envelope leads to a different page.
+        </p>
+
+        <div class="btn-row">
+          <a class="btn" href="./letters.html">Go to Envelopes</a>
+          <a class="btn secondary" href="./page2.html">About Page</a>
+        </div>
+
+        <div class="tiny">Built with HTML/CSS/JS • Hosted on GitHub Pages</div>
+      </div>
+
+      <div class="heart-area">
+        <button class="heart-btn" id="heartButton" aria-label="Heart button">
+          <div class="heart-label">OPEN</div>
+        </button>
+      </div>
+    </div>
   </div>
 
   <script>
+    // Heart click goes to envelopes grid
     document.getElementById("heartButton").addEventListener("click", () => {
       window.location.href = "./letters.html";
     });
