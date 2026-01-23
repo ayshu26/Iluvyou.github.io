@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My GitHub Page</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&display=swap" rel="stylesheet">
 
   <style>
     /* Full-page background */
@@ -39,8 +40,8 @@
 
     /* Heart button */
     .heart-btn {
-      width: 220px;
-      height: 220px;
+      width: 180px;
+      height: 180px;
       border: none;
       cursor: pointer;
       background: #e60023; /* red */
@@ -57,19 +58,19 @@
     .heart-btn::after {
       content: "";
       position: absolute;
-      width: 220px;
-      height: 220px;
+      width: 180px;
+      height: 180px;
       background: #e60023;
       border-radius: 50%;
     }
 
     .heart-btn::before {
-      top: -110px;
+      top: -90px;
       left: 0;
     }
 
     .heart-btn::after {
-      left: 110px;
+      left: 90px;
       top: 0;
     }
 
@@ -105,11 +106,37 @@
       font-size: 18px;
       text-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
+    /* Vertical EZY title */
+.ezy-title {
+  position: fixed;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  font-family: "Baloo 2", cursive;
+  font-size: 120px;
+  font-weight: 800;
+  color: white;
+
+  text-shadow:
+    0 6px 15px rgba(0, 0, 0, 0.45);
+
+  user-select: none;
+}
+
   </style>
 </head>
 
 <body>
   <div class="overlay"></div>
+<div class="ezy-title">
+  <span>E</span>
+  <span>Z</span>
+  <span>Y</span>
+</div>
 
   <div class="content">
     <button class="heart-btn" id="heartButton" aria-label="Heart button">
