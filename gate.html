@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EZY - Enter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&display=swap" rel="stylesheet">
+
+  <style>
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #7a4b55, #3a2328);
+      color:white;
+    }
+    .overlay{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.25);
+      z-index: 0;
+    }
+    .card{
+      position: relative;
+      z-index: 1;
+      width: min(620px, 92vw);
+      background: rgba(0,0,0,0.28);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+      backdrop-filter: blur(6px);
+      text-align: center;
+    }
+    h1{
+      font-family:"Baloo 2", cursive;
+      font-size: 52px;
+      margin: 0 0 10px;
+      text-shadow: 0 6px 15px rgba(0,0,0,0.35);
+    }
+    p{
+      margin: 0 0 18px;
+      opacity: 0.95;
+      line-height: 1.55;
+    }
+    .row{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    input{
+      width: min(320px, 78vw);
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.10);
+      color: white;
+      outline: none;
+      font-size: 16px;
+    }
+    input::placeholder{ color: rgba(255,255,255,0.75); }
+    button{
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      background: #e60023;
+      color: white;
+      font-weight: 800;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      transition: transform 0.15s ease, filter 0.15s ease;
+      font-size: 16px;
+    }
+    button:hover{ transform: translateY(-2px); filter: brightness(1.05); }
+    .msg{
+      margin-top: 12px;
+      min-height: 22px;
+      font-size: 14px;
+      opacity: 0.95;
+    }
+    .msg.error{ color: #ffd1d1; }
+  </style>
+</head>
+
+<body>
+  <div class="overlay"></div>
+
+  <div class="card">
+    <h1>EZY</h1>
+    <p>Enter the password to continue.</p>
+
+    <div class="row">
+      <input id="pw" type="password" placeholder="Password" autocomplete="off" />
+      <button id="enterBtn">Enter</button>
+    </div>
+
+    <div id="msg" class="msg"></div>
+  </div>
+
+  <script>
+    // ✅ Change this password to whatever you want:
+    const PASSWORD = "1234";
+
+    const pw = document.getElementById("pw");
+    const msg = document.getElementById("msg");
+
+    function tryEnter(){
+      if(pw.value === PASSWORD){
+        // optional: remember unlocked for this browser session
+        sessionStorage.setItem("ezy_unlocked", "yes");
+        window.location.href = "./letters.html";
+      } else {
+        msg.textContent = "Wrong password. Try again.";
+        msg.classList.add("error");
+        pw.value = "";
+        pw.focus();
+      }
+    }
+
+    document.getElementById("enterBtn").addEventListener("click", tryEnter);
+    pw.addEventListener("keydown", (e) => {
+      if(e.key === "Enter") tryEnter();
+    });
+
+    // If already unlocked in this tab/session, skip the gate
+    if(sessionStorage.getItem("ezy_unlocked") === "yes"){
+      window.location.href = "./letters.html";
+    }
+  </script>
+</body>
+</html>
