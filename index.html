@@ -15,23 +15,9 @@
       display:grid;
       place-items:center;
       font-family: Arial, sans-serif;
-
-      /* Same theme background */
       background: radial-gradient(circle at top, #7a4b55, #3a2328);
       color:white;
     }
-
-    /* Optional: if you still want your custom image behind the theme,
-       uncomment the next 5 lines and make sure background.jpg exists.
-    */
-    /*
-    body{
-      background-image: url("./background.jpg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-    */
 
     .overlay{
       position: fixed;
@@ -49,8 +35,7 @@
     .topbar{
       display:flex;
       align-items:center;
-      justify-content:space-between;
-      gap:12px;
+      justify-content:flex-start;
       margin-bottom: 18px;
     }
 
@@ -81,7 +66,7 @@
       .title{ font-size: 48px; }
     }
 
-    /* LEFT acrostic title */
+    /* Vertical EZY letters */
     .ezy-vertical{
       position: fixed;
       left: 36px;
@@ -102,10 +87,9 @@
     }
 
     @media (max-width: 900px){
-      .ezy-vertical{ display:none; } /* hide on small screens */
+      .ezy-vertical{ display:none; }
     }
 
-    /* Heart button pulse */
     @keyframes pulse {
       0%   { transform: rotate(-45deg) scale(1); }
       50%  { transform: rotate(-45deg) scale(1.04); }
@@ -128,8 +112,6 @@
       transform: rotate(-45deg);
       border-radius: 18px;
       box-shadow: 0 14px 35px rgba(0,0,0,0.35);
-      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
-      outline: none;
       animation: pulse 2.5s infinite;
     }
 
@@ -160,46 +142,11 @@
       user-select:none;
     }
 
-    .heart-btn:hover{
-      transform: rotate(-45deg) scale(1.03);
-      box-shadow: 0 18px 45px rgba(0,0,0,0.45);
-      filter: brightness(1.05);
-    }
-
-    .heart-btn:active{
-      transform: rotate(-45deg) scale(0.98);
-    }
-
     .subtitle{
       font-size: 18px;
       line-height: 1.55;
       opacity: 0.95;
       margin: 0 0 14px;
-    }
-
-    .btn-row{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top: 10px;
-    }
-
-    a.btn{
-      display:inline-block;
-      text-decoration:none;
-      color:white;
-      background:#e60023;
-      padding: 12px 16px;
-      border-radius: 14px;
-      font-weight:800;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-      transition: transform 0.15s ease, filter 0.15s ease;
-    }
-    a.btn:hover{ transform: translateY(-2px); filter: brightness(1.05); }
-
-    a.btn.secondary{
-      background: rgba(255,255,255,0.18);
-      border: 1px solid rgba(255,255,255,0.2);
     }
 
     .tiny{
@@ -213,7 +160,6 @@
 <body>
   <div class="overlay"></div>
 
-  <!-- Vertical EZY -->
   <div class="ezy-vertical">
     <span>E</span>
     <span>Z</span>
@@ -222,22 +168,17 @@
 
   <div class="wrap">
     <div class="topbar">
-      <h1 class="title">Here's a little something for you!</h1>
-      
+      <h1 class="title">EZY</h1>
     </div>
 
     <div class="card">
       <div>
         <p class="subtitle">
-          Click the heart to open your envelopes. Each envelope leads to a little message that I hope you remember you will always remember.
+          Click the heart to open your envelopes.
         </p>
 
-        <div class="btn-row">
-          <a class="btn" href="./letters.html">Go to Envelopes</a>
-         
-        </div>
-
         
+        </div>
       </div>
 
       <div class="heart-area">
@@ -249,7 +190,6 @@
   </div>
 
   <script>
-    // Heart click goes to envelopes grid
     document.getElementById("heartButton").addEventListener("click", () => {
       window.location.href = "./letters.html";
     });
